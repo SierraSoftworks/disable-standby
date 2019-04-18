@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Sierra Softworks")]
 [assembly: AssemblyProduct("Standby Inhibitor")]
-[assembly: AssemblyCopyright("Copyright © Benjamin Pannell 2010")]
+[assembly: AssemblyCopyright("Copyright © Sierra Softworks 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

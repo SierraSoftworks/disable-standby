@@ -18,19 +18,19 @@ namespace DisableStandby
 
             NotifyIcon ico = new NotifyIcon();
             ico.Text = "Standby Inhibitor";
-            ico.Icon = DisableStandby.Properties.Resources.Battery_Options;
+            ico.Icon = Properties.Resources.Battery_Options;
             ico.ContextMenuStrip = new ContextMenuStrip();
 
             ico.ContextMenuStrip.Items.Add("Enable Standby");
             ico.ContextMenuStrip.Items[0].Click += (o, e) =>
                 {
-                    Disabled = !fnEnableStandby(ico);
+                    Disabled = !EnableStandby(ico);
                 };
 
             ico.ContextMenuStrip.Items.Add("Disable Standby");
             ico.ContextMenuStrip.Items[1].Click += (o, e) =>
                 {
-                    Disabled = fnDisableStandby(ico);
+                    Disabled = DisableStandby(ico);
                 };
 
             ico.ContextMenuStrip.Items.Add(new ToolStripSeparator());
@@ -68,17 +68,17 @@ namespace DisableStandby
 
             ico.Visible = true;
 
-            Disabled = fnDisableStandby(ico);
+            Disabled = DisableStandby(ico);
 
             Application.ApplicationExit += (o, e) =>
                 {
-                    Disabled = !fnEnableStandby(ico);
+                    Disabled = !EnableStandby(ico);
                 };
 
             Application.Run();
         }
 
-        static bool fnDisableStandby(NotifyIcon ico)
+        static bool DisableStandby(NotifyIcon ico)
         {
             bool res = SierraLib.Win32API.SystemPowerState.PreventStandby();
             if (!res)
@@ -104,7 +104,7 @@ namespace DisableStandby
             return res;
         }
 
-        static bool fnEnableStandby(NotifyIcon ico)
+        static bool EnableStandby(NotifyIcon ico)
         {
             bool res = SierraLib.Win32API.SystemPowerState.Reset();
             if (!res)

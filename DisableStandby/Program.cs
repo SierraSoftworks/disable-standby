@@ -41,8 +41,11 @@ namespace DisableStandby
                     Application.Exit();
                 };
 
-            ico.Click += (o, e) =>
+            ico.MouseClick += (o, e) =>
                 {
+                    if (e.Button == MouseButtons.Right)
+                        return;
+
                     if (Disabled)
                     {
                         ico.BalloonTipIcon = ToolTipIcon.Info;
